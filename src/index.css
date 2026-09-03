@@ -79,6 +79,57 @@ code, pre, .font-mono {
   max-width: 1280px;
   margin: 0 auto;
   padding: 1.5rem 1rem 4rem 1rem;
+  width: 100%;
+}
+
+/* Small utility layer used by the component markup. */
+.flex { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.overflow-hidden { overflow: hidden; }
+.overflow-x-auto { overflow-x: auto; }
+.text-center { text-align: center; }
+.block { display: block; }
+.gap-1 { gap: 0.25rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 0.75rem; }
+.p-4 { padding: 1rem; }
+.p-5 { padding: 1.25rem; }
+.p-6 { padding: 1.5rem; }
+.py-1 { padding-block: 0.25rem; }
+.py-2 { padding-block: 0.5rem; }
+.py-12 { padding-block: 3rem; }
+.py-20 { padding-block: 5rem; }
+.px-2 { padding-inline: 0.5rem; }
+.px-3 { padding-inline: 0.75rem; }
+.px-4 { padding-inline: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-5 { margin-bottom: 1.25rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mt-1 { margin-top: 0.25rem; }
+.my-5 { margin-block: 1.25rem; }
+
+header.glass-card {
+  min-width: 0;
+}
+
+header.glass-card > .flex {
+  min-width: 0;
+}
+
+header.glass-card select {
+  max-width: min(42vw, 300px);
+  min-width: 0;
 }
 
 /* Glass Card */
@@ -325,6 +376,14 @@ code, pre, .font-mono {
   .grid-3, .grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .grid-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app-container {
+    padding-inline: 1rem;
+  }
 }
 @media (max-width: 600px) {
   .grid-2, .grid-3, .grid-4 {
@@ -332,5 +391,76 @@ code, pre, .font-mono {
   }
   .app-container {
     padding: 1rem 0.75rem;
+  }
+
+  header.glass-card {
+    position: static;
+    padding: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  header.glass-card > .flex {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  header.glass-card > .flex > .flex:first-child {
+    width: 100%;
+  }
+
+  header.glass-card > .flex > .flex:last-child {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  header.glass-card > .flex > .flex:last-child > * {
+    min-width: 0;
+    width: 100%;
+  }
+
+  header.glass-card > .flex > .flex:last-child > .relative {
+    width: 100%;
+  }
+
+  header.glass-card .btn {
+    min-height: 42px;
+    padding-inline: 0.65rem;
+  }
+
+  header.glass-card .btn-primary {
+    grid-column: 1 / -1;
+  }
+
+  header.glass-card select {
+    max-width: 58vw;
+  }
+
+  .modal-overlay {
+    align-items: flex-end;
+    padding: 0.5rem;
+  }
+
+  .modal-content {
+    border-radius: var(--radius-md);
+    max-height: calc(100vh - 1rem);
+  }
+
+  .modal-content.p-6 {
+    padding: 1rem;
+  }
+
+  .tabs {
+    overflow-x: auto;
+  }
+
+  .tab-btn {
+    min-width: 7rem;
+    white-space: nowrap;
+  }
+
+  .glass-card {
+    border-radius: var(--radius-sm);
   }
 }
